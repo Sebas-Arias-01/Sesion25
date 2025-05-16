@@ -47,10 +47,10 @@ public class Order {
 
     public void setStatus(String status) {
         // Validate that the status is one of the allowed values
-        if (status.equals("Processing") || status.equals("Shipped") || status.equals("Delivered")) {
+        if (status.equals("En proceso") || status.equals("Enviado") || status.equals("Entregado")) {
             this.status = status;
         } else {
-            throw new IllegalArgumentException("Invalid status. Must be 'Processing', 'Shipped', or 'Delivered'.");
+            throw new IllegalArgumentException("Estado no válido. Debe ser 'En proceso', 'Enviado' o 'Entregado'.");
         }
     }
 
