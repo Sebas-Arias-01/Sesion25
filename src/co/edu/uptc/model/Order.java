@@ -12,7 +12,8 @@ public class Order {
     private List<String> productIds; // List of product identifiers
 
     // Empty constructor
-    public Order() {}
+    public Order() {
+    }
 
     // Full constructor
     public Order(String orderId, Date creationDate, String status, String customerId, List<String> productIds) {
@@ -24,7 +25,6 @@ public class Order {
     }
 
     // Getters and Setters
-
     public String getOrderId() {
         return orderId;
     }
@@ -69,4 +69,16 @@ public class Order {
     public void setProductIds(List<String> productIds) {
         this.productIds = productIds;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", creationDate=" + creationDate +
+                ", status='" + status + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", productIds=" + productIds +
+                '}';
+    }
+
 }
