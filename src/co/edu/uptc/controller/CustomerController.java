@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class CustomerController {
-    public static final String FILE_NAME = "customers.txt";
+    public static final String FILE = "customers.txt";
 
     public void saveCustomer(Customer customer) {
         String line = customer.getId() + "," + customer.getAddress() + "," + customer.getPhone() + "," + customer.getEmail();
         try {
-            Persistence.saveLine(FILE_NAME, line);
+            Persistence.saveLine(FILE, line);
         } catch (IOException e) {
             System.out.println("Error al guardar el cliente: " + e.getMessage());
         }
     }
 
     public Customer findCustomerById(String customerId) throws IOException {
-        List<String> lines = Persistence.readFile(FILE_NAME);
+        List<String> lines = Persistence.readFile(FILE);
         for (String line : lines) {
             StringTokenizer st = new StringTokenizer(line, ",");
             String id = st.nextToken();

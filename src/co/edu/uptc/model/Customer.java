@@ -1,7 +1,7 @@
 package co.edu.uptc.model;
 
 public class Customer {
-    private int id;
+    private String id;
     private String address;
     private String phone;
     private String email;
@@ -10,18 +10,18 @@ public class Customer {
     
     }
 
-    public Customer(int id, String address, String phone, String email) {
+    public Customer(String id, String address, String phone, String email) {
         this.id = id;
         this.address = address;
         this.phone = phone;
         this.email = email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
