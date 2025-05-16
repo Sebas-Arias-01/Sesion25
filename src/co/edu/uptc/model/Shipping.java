@@ -7,6 +7,12 @@ public class Shipping {
     private String status;
     private String date;
     
+    @Override
+    public String toString() {
+        return "Shipping [id=" + id + ", nameTransport=" + nameTransport + ", status=" + status + ", date=" + date
+                + "]";
+    }
+
     public Shipping() {
     }
 
