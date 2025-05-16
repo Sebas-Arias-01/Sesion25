@@ -1,5 +1,10 @@
+import java.util.ResourceBundle.Control;
+
+import co.edu.uptc.controller.MainMenu;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        
+        MainMenu mainMenu = new MainMenu();
     }
 }

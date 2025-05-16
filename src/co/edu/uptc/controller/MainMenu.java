@@ -28,6 +28,7 @@ public class MainMenu {
                     break;
                 case 3:
                     System.out.println("¡Gracias por usar el programa!");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Opción inválida. Intente de nuevo.");
@@ -47,6 +48,7 @@ public class MainMenu {
         System.out.println("2. Cliente");
         System.out.println("3. Pedido");
         System.out.println("4. Envío");
+        System.out.println("5. Salir");
         System.out.print("Seleccione una opción: ");
 
         subOption = scanner.nextInt();
@@ -63,6 +65,10 @@ public class MainMenu {
                 break;
             case 4:
                 System.out.println(action + " Envío seleccionado.");
+                break;
+            case 5:
+                System.out.println("Saliendo del programa.");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Opción inválida en el submenú.");

@@ -6,6 +6,11 @@ public class Product {
     private String description;
     private String presentation;
     
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", description=" + description + ", presentation=" + presentation + "]";
+    }
+
     public Product() {
         
     }
