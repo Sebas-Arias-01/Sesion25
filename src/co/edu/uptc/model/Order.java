@@ -6,7 +6,7 @@ import java.util.List;
 public class Order {
 
     private String orderId;
-    private Date creationDate;
+    private String creationDate;
     private String status; // Must be "Processing", "Shipped", or "Delivered"
     private String customerId;
     private List<String> productIds; // List of product identifiers
@@ -16,12 +16,20 @@ public class Order {
     }
 
     // Full constructor
-    public Order(String orderId, Date creationDate, String status, String customerId, List<String> productIds) {
+    public Order(String orderId, String creationDate, String status, String customerId, List<String> productIds) {
         this.orderId = orderId;
         this.creationDate = creationDate;
         setStatus(status); // Using setter to validate status
         this.customerId = customerId;
         this.productIds = productIds;
+    }
+
+    public Order(String OrderId,String creationDate, String status, String customerId ){
+        this.orderId = OrderId;
+        this.creationDate = creationDate;
+        this.status = status;
+        this.customerId = customerId;       
+
     }
 
     // Getters and Setters
@@ -33,11 +41,13 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Date getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+   
+
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 

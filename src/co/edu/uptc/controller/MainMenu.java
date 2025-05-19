@@ -7,11 +7,9 @@ import javax.swing.JOptionPane;
 public class MainMenu {
     private ControllerProduct controllerProduct = new ControllerProduct();
     private ControllerCustomer controllerCustomer = new ControllerCustomer();
+    private ControllerOrder controllerOrder = new ControllerOrder();
     Scanner scanner = new Scanner(System.in);
-    // Agrega los demás controladores si los tienes
-    // private ControllerClient controllerClient = new ControllerClient();
-    // private ControllerOrder controllerOrder = new ControllerOrder();
-    // private ControllerShipping controllerShipping = new ControllerShipping();
+    
 
     public MainMenu() {
         mostrarMenu();
@@ -74,8 +72,6 @@ public class MainMenu {
             case "11": // Registrar Producto
                 JOptionPane.showMessageDialog(null, "Registrando Producto");
                 controllerProduct.addProduct();
-                
-                
                 break;
             case "12": // Registrar Cliente
                 JOptionPane.showMessageDialog(null, "Registrando Cliente");
@@ -83,6 +79,7 @@ public class MainMenu {
                 break;
             case "13": // Registrar Pedido
                 JOptionPane.showMessageDialog(null, "Registrando Pedido");
+                controllerOrder.addOrder();
                 break;
             case "14": // Registrar Envío
                 JOptionPane.showMessageDialog(null, "Registrando Envío");
@@ -97,6 +94,7 @@ public class MainMenu {
                 break;
             case "23": // Imprimir Pedido
                 JOptionPane.showMessageDialog(null, "Imprimiendo Pedido");
+                controllerOrder.readOrder();
                 break;
             case "24": // Imprimir Envío
                 JOptionPane.showMessageDialog(null, "Imprimiendo Envío");
@@ -113,7 +111,10 @@ public class MainMenu {
                 "ID", JOptionPane.QUESTION_MESSAGE));
                 break;
             case "33": // Buscar Pedido
-                JOptionPane.showMessageDialog(null, "Buscando Pedido");
+                JOptionPane.showMessageDialog(null, "Buscando Orden");
+                controllerOrder.findOrder(JOptionPane.showInputDialog(null,
+                "Digite ID de la Orden a buscar",
+                "ID", JOptionPane.QUESTION_MESSAGE));
                 break;
             case "34": // Buscar Envío
                 JOptionPane.showMessageDialog(null, "Buscando Envío");
