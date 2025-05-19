@@ -2,78 +2,124 @@ package co.edu.uptc.controller;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class MainMenu {
+    private ControllerProduct controllerProduct = new ControllerProduct();
+    private ControllerCustomer controllerCustomer = new ControllerCustomer();
+    Scanner scanner = new Scanner(System.in);
+    // Agrega los demás controladores si los tienes
+    // private ControllerClient controllerClient = new ControllerClient();
+    // private ControllerOrder controllerOrder = new ControllerOrder();
+    // private ControllerShipping controllerShipping = new ControllerShipping();
 
-   public MainMenu() {
-        Scanner scanner = new Scanner(System.in);
-        int mainOption = 0;
-
-        System.out.println("¡Bienvenido al sistema de gestión!");
-
-        do {
-            System.out.println("\nMENÚ PRINCIPAL");
-            System.out.println("1. Registrar");
-            System.out.println("2. Imprimir");
-            System.out.println("3. Salir");
-            System.out.print("Seleccione una opción: ");
-
-            mainOption = scanner.nextInt();
-
-            switch (mainOption) {
-                case 1:
-                    showSubMenu("Registrar");
-                    break;
-                case 2:
-                    showSubMenu("Imprimir");
-                    break;
-                case 3:
-                    System.out.println("¡Gracias por usar el programa!");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Opción inválida. Intente de nuevo.");
-            }
-
-        } while (mainOption != 3);
-
-        scanner.close();
+    public MainMenu() {
+        mostrarMenu();
     }
 
-    private void showSubMenu(String action) {
-        Scanner scanner = new Scanner(System.in);
-        int subOption = 0;
+    private void mostrarMenu() {
+        JOptionPane.showMessageDialog(null, "¡Bienvenido al Sistema!");
 
-        System.out.println("\n" + action.toUpperCase() + " OPCIONES:");
-        System.out.println("1. Producto");
-        System.out.println("2. Cliente");
-        System.out.println("3. Pedido");
-        System.out.println("4. Envío");
-        System.out.println("5. Salir");
-        System.out.print("Seleccione una opción: ");
+        String opcionPrincipal;
+        do {
+            opcionPrincipal = JOptionPane.showInputDialog(null,
+                    "Menú Principal:\n1. Registrar\n2. Imprimir\n3. Buscar\n4. Salir",
+                    "Menú Principal", JOptionPane.QUESTION_MESSAGE);
 
-        subOption = scanner.nextInt();
-
-        switch (subOption) {
-            case 1:
-                System.out.println(action + " Producto seleccionado.");
-                break;
-            case 2:
-                System.out.println(action + " Cliente seleccionado.");
-                break;
-            case 3:
-                System.out.println(action + " Pedido seleccionado.");
-                break;
-            case 4:
-                System.out.println(action + " Envío seleccionado.");
-                break;
-            case 5:
-                System.out.println("Saliendo del programa.");
+            if (opcionPrincipal == null || opcionPrincipal.equals("4")) {
+                JOptionPane.showMessageDialog(null, "¡Gracias por usar el sistema!");
                 System.exit(0);
                 break;
-            default:
-                System.out.println("Opción inválida en el submenú.");
-        }
+            }
+
+            if (opcionPrincipal.matches("[1-3]")) {
+                mostrarSubmenu(opcionPrincipal);
+            } else {
+                JOptionPane.showMessageDialog(null, "Opción no válida.");
+            }
+
+        } while (true);
     }
 
+    private void mostrarSubmenu(String accionPrincipal) {
+        String opcionSecundaria;
+        do {
+            opcionSecundaria = JOptionPane.showInputDialog(null,
+                    "Seleccione una opción:\n1. Producto\n2. Cliente\n3. Pedido\n4. Envío\n5. Menú Anterior\n6. Salir",
+                    "Submenú", JOptionPane.QUESTION_MESSAGE);
 
+            if (opcionSecundaria == null || opcionSecundaria.equals("6")) {
+                JOptionPane.showMessageDialog(null, "Saliendo del sistema...");
+                System.exit(0);
+            }
+
+            if (opcionSecundaria.equals("5")) {
+                mostrarMenu();
+                break;
+            }
+
+            if (opcionSecundaria.matches("[1-4]")) {
+                ejecutarAccion(accionPrincipal, opcionSecundaria);
+            } else {
+                JOptionPane.showMessageDialog(null, "Opción no válida.");
+            }
+
+        } while (true);
+    }
+
+    private void ejecutarAccion(String accion, String entidad) {
+       
+
+        switch (accion + entidad) {
+            case "11": // Registrar Producto
+                JOptionPane.showMessageDialog(null, "Registrando Producto");
+                controllerProduct.addProduct();
+                
+                
+                break;
+            case "12": // Registrar Cliente
+                JOptionPane.showMessageDialog(null, "Registrando Cliente");
+                controllerCustomer.addCustomer();
+                break;
+            case "13": // Registrar Pedido
+                JOptionPane.showMessageDialog(null, "Registrando Pedido");
+                break;
+            case "14": // Registrar Envío
+                JOptionPane.showMessageDialog(null, "Registrando Envío");
+                break;
+            case "21": // Imprimir Producto
+                JOptionPane.showMessageDialog(null, "Imprimiendo Producto");
+                controllerProduct.readProduct();
+                break;
+            case "22": // Imprimir Cliente
+                JOptionPane.showMessageDialog(null, "Imprimiendo Cliente");
+                controllerCustomer.readCustomer();
+                break;
+            case "23": // Imprimir Pedido
+                JOptionPane.showMessageDialog(null, "Imprimiendo Pedido");
+                break;
+            case "24": // Imprimir Envío
+                JOptionPane.showMessageDialog(null, "Imprimiendo Envío");
+                break;
+            case "31": // Buscar Producto
+                controllerProduct.findProduct(JOptionPane.showInputDialog(null,
+                "Digite ID del producto a buscar",
+                "ID", JOptionPane.QUESTION_MESSAGE));
+                break;
+            case "32": // Buscar Cliente
+                JOptionPane.showMessageDialog(null, "Buscando Cliente");
+                controllerCustomer.findCustomer(JOptionPane.showInputDialog(null,
+                "Digite ID del Cliente a buscar",
+                "ID", JOptionPane.QUESTION_MESSAGE));
+                break;
+            case "33": // Buscar Pedido
+                JOptionPane.showMessageDialog(null, "Buscando Pedido");
+                break;
+            case "34": // Buscar Envío
+                JOptionPane.showMessageDialog(null, "Buscando Envío");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Acción no válida.");
+        }
+    }
 }
