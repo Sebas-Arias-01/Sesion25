@@ -10,7 +10,7 @@ import co.edu.uptc.model.Product;
 
 public class ControllerProduct {
    
-    private String filePath = "MiVersionSesion25\\src\\co\\edu\\uptc\\repository\\products.txt";
+    private String filePath = "Sesion25\\src\\co\\edu\\uptc\\repository\\products.txt";
     private String[] productsName = {"Id", "Descripcion", "Presentacion"};
     private String[] characteristics = new String[3];
     private Product product = new Product();

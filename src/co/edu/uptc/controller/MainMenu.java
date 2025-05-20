@@ -8,6 +8,7 @@ public class MainMenu {
     private ControllerProduct controllerProduct = new ControllerProduct();
     private ControllerCustomer controllerCustomer = new ControllerCustomer();
     private ControllerOrder controllerOrder = new ControllerOrder();
+    private ControllerShipping controllerShipping = new ControllerShipping();
     Scanner scanner = new Scanner(System.in);
     
 
@@ -83,6 +84,7 @@ public class MainMenu {
                 break;
             case "14": // Registrar Envío
                 JOptionPane.showMessageDialog(null, "Registrando Envío");
+                controllerShipping.addShipping();
                 break;
             case "21": // Imprimir Producto
                 JOptionPane.showMessageDialog(null, "Imprimiendo Producto");
@@ -98,6 +100,7 @@ public class MainMenu {
                 break;
             case "24": // Imprimir Envío
                 JOptionPane.showMessageDialog(null, "Imprimiendo Envío");
+                controllerShipping.readShipping();
                 break;
             case "31": // Buscar Producto
                 controllerProduct.findProduct(JOptionPane.showInputDialog(null,
@@ -118,6 +121,9 @@ public class MainMenu {
                 break;
             case "34": // Buscar Envío
                 JOptionPane.showMessageDialog(null, "Buscando Envío");
+                controllerShipping.findShipping(JOptionPane.showInputDialog(null,
+                "Digite ID del Envío a buscar",
+                "ID", JOptionPane.QUESTION_MESSAGE));
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Acción no válida.");
